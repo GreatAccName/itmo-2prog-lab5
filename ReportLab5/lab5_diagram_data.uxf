@@ -1,0 +1,120 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>0</x><y>210</y><w>280</w><h>620</h></coordinates><panel_attributes>class +lab5.datapac.Flat {final}
+implements Comparable
+--
+_-idGen: int_
+_-allCreatedFlats: ArrayList {final}_
+-id: Integer
+-creationDate: LocalDate
+-name: String
+-area: float
+-numberOfRooms: int
+-isNew: Boolean
+-transport: Transport
+-view: View
+-coordinates: Coordinates
+-house: House
+--
++Flat()
++Flat(arg0: String, arg1: float, arg2: int,
+      arg3: Boolean, arg4: Transport,
+      arg5: View, arg6: Coordinates, arg7: House)
+    throws BadInputException
++setFlat(arg0: String, arg1: float, arg2: int,
+         arg3: Boolean, arg4: Transport,
+         arg5: View, arg6: Coordinates,
+         arg7: House): void
+    throws BadInputException
++getId(): Integer
+...(other getters)
++isNameGood(arg0: String): boolean
+...(other condition verifications)
++flatFromInput(arg0: Scanner): Flat
+    throws BadInputException
++getShowableFlat(): String
++getSimpleFlat(): String
++parseLine(arg0: String): Flat
+    throws NullException, BadInputException
++equals(arg0: Object): boolean
++toString(): String
++hashCode(): int
++compareTo(arg0: Flat): int
++compareTo(arg0: Object): int (мостовой метод)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>340</y><w>220</w><h>270</h></coordinates><panel_attributes>class +lab5.datapac.Coordinates
+--
+_+MAX_X: double {final}_
+_+MAX_Y: int {final}_
+-x: double
+-y: int
+--
++Coordinates(arg0: double, arg1: int)
+    throws BadInputException
++Coordinates()
++getSimpleCoordinates(): String
++getX(): double
++getY(): int
++isXgood(arg0: double): boolean
++isYgood(arg0: int): boolean
++equals(arg0: Object): boolean
++toString(): String
++hashCode(): int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>340</y><w>250</w><h>290</h></coordinates><panel_attributes>class +lab5.datapac.House
+--
+-name: String
+-year: long
+-numberOfLifts: int
+--
++House(arg0: String, arg1: long, arg2: int)
+    throws BadInputException
++House()
++getYear(): long
++getNumberOfLifts(): int
++isNameGood(arg0: String): boolean
++isYearGood(arg0: long): boolean
++isNumberOfLiftsGood(arg0: int): boolean
++getSimpleHouse(): String
++equals(arg0: Object): boolean
++toString(): String
++hashCode(): int
++getName(): String
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>670</y><w>240</w><h>120</h></coordinates><panel_attributes>class +lab5.datapac.FlatsCollection {final}
+--
+-flats: java.util.Map
+-creationDate: java.time.LocalDate
+--
++lab5.datapac.FlatsCollection()
++getFlats(): java.util.Map
++getCreationDate(): LocalDate
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>200</w><h>180</h></coordinates><panel_attributes>enum +lab5.enums.View {final}
+--
+_+STREET: View {final}_
+_+PARK: View {final}_
+_+BAD: View {final}_
+_+GOOD: View {final}_
+_-$VALUES: View[] {final}_
+--
+-View(arg0: String, arg1: int)
++isInView(arg0: String): boolean
++values(): View[]
++valueOf(arg0: String): View
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>210</x><y>0</y><w>220</w><h>180</h></coordinates><panel_attributes>enum +lab5.enums.Transport {final}
+--
+_+FEW: Transport {final}_
+_+NONE: Transport {final}_
+_+NORMAL: Transport {final}_
+_+ENOUGH: Transport {final}_
+_-$VALUES: Transport[] {final}_
+--
+-Transport(arg0: String, arg1: int)
++isInTransport(arg0: String): boolean
++values(): Transport[]
++valueOf(arg0: String): Transport
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>230</y><w>280</w><h>70</h></coordinates><panel_attributes>class +lab5.exceptions.BadInputException
+--
+--
++lab5.exceptions.BadInputException()
++lab5.exceptions.BadInputException(arg0: String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>130</y><w>260</w><h>70</h></coordinates><panel_attributes>class +lab5.exceptions.NullException
+--
+--
++lab5.exceptions.NullException()
++lab5.exceptions.NullException(arg0: String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>20</x><y>170</y><w>40</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>240</x><y>170</y><w>40</w><h>60</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>267</x><y>594</y><w>390</w><h>70</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>370;10;360;50;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>267</x><y>344</y><w>80</w><h>40</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>60;10;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>656</y><w>70</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;20</additional_attributes></element></diagram>

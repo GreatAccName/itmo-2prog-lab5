@@ -1,0 +1,19 @@
+info
+insert key59
+FName59 96.625 5 true ENOUGH GOOD 9.625 8 HouseName91 1991 6
+update 7
+FName78 97.625 5 true FEW GOOD 9.625 8 HouseName91 1989 5
+remove_key key4
+execute_script
+remove_lower 3
+replace_if_greater key5
+FName78 97.625 5 true FEW GOOD 9.625 8 HouseName91 1989 5
+replace_if_lower key6
+FName78 97.625 5 true FEW BEST 9.625 8 HouseName91 1989 5
+min_by_id
+filter_starts_with_name FlatName
+print_descending
+save
+clear
+exit
+help

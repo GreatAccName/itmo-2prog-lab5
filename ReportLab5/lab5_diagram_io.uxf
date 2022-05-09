@@ -1,0 +1,167 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;Relation&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;10&lt;/x&gt;&lt;y&gt;106&lt;/y&gt;&lt;w&gt;60&lt;/w&gt;&lt;h&gt;330&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;lt=&amp;lt;-&lt;/panel_attributes&gt;&lt;additional_attributes&gt;10;10;40;310&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;470&lt;/x&gt;&lt;y&gt;333&lt;/y&gt;&lt;w&gt;280&lt;/w&gt;&lt;h&gt;240&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;class +lab5.iopac.RWXbase
+--
+#envVarName: String
+#envVarPath: String
+#collLink: FlatsCollection
+--
+#lab5.iopac.RWXbase()
++lab5.iopac.RWXbase(arg0: FlatsCollection)
++getEnvName(): String
++getEnvVarPath(): String
++getCollLink(): FlatsCollection
+#initializeEnvVarPath(): void
++makeKeyValFrom(arg0: String): String[]
++makeArrFrom(arg0: String): String[]
++openFileWriter(arg0: String): java.io.FileWriter
++openScanner(arg0: String): Scanner&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;480&lt;/x&gt;&lt;y&gt;146&lt;/y&gt;&lt;w&gt;280&lt;/w&gt;&lt;h&gt;140&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;class +lab5.iopac.WriteFileFlats
+extends lab5.iopac.RWXbase
+implements WritableFlats
+--
+--
+#lab5.iopac.WriteFileFlats()
++lab5.iopac.WriteFileFlats(arg0: FlatsCollection)
++writeTextTo(arg0: String, arg1: ArrayList): void
++write(arg0: ArrayList): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;10&lt;/x&gt;&lt;y&gt;166&lt;/y&gt;&lt;w&gt;280&lt;/w&gt;&lt;h&gt;190&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;class +lab5.iopac.ReadFileFlats
+extends lab5.iopac.RWXbase
+implements lab5.interf.ReadableFlats
+--
+--
++ReadFileFlats(arg0: FlatsCollection)
+    throws NullException
+#ReadFileFlats()
++readFrom(arg0: String): void
+    throws IOException, NullException
++printFlatDataArr(arg0: int): void
++read(): void
+    throws IOException, NullException
+&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;310&lt;/x&gt;&lt;y&gt;170&lt;/y&gt;&lt;w&gt;310&lt;/w&gt;&lt;h&gt;270&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;class +lab5.iopac.Executer
+extends lab5.iopac.Commands
+implements Executable
+--
+_-READ_LIMIT: int_
+--
++lab5.iopac.Executer(arg0: FlatsCollection)
+#lab5.iopac.Executer()
++executeFromInput(): void
++executeFromEnv(): void
++getReadLimit(): int
++executeFrom(arg0: String): void
+-lambda$executeFrom$5(arg0: Flat, arg1: Flat): int
+-lambda$executeFrom$4(arg0: Flat, arg1: Flat): int
+-lambda$executeFrom$3(arg0: Flat, arg1: Flat): int
+-lambda$executeFromInput$2(arg0: Flat, arg1: Flat): int
+-lambda$executeFromInput$1(arg0: Flat, arg1: Flat): int
+-lambda$executeFromInput$0(arg0: Flat, arg1: Flat): int&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>530</x><y>0</y><w>220</w><h>100</h></coordinates><panel_attributes>/interface +lab5.interf.ReadableFlats/
+--
+--
++readFrom(arg0: String): void
+    throws IOException, NullException
++read(): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>0</y><w>220</w><h>120</h></coordinates><panel_attributes>/interface +lab5.interf.Executable/
+--
+--
++executeFromInput(): void
++executeFromEnv(): void
+    throws IOException, NullException
++executeFrom(arg0: String): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>0</y><w>270</w><h>100</h></coordinates><panel_attributes>/interface +lab5.interf.WritableFlats/
+--
+--
++writeTextTo(arg0: String, arg1: ArrayList): void
+    throws IOException, NullException
++write(arg0: ArrayList): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>440</x><y>700</y><w>310</w><h>110</h></coordinates><panel_attributes>class +lab5.mainpac.Main
+--
+--
++lab5.mainpac.Main()
++stage2InteractiveConcole(arg0: FlatsCollection): void
++stage1DataInputFromFile(arg0: FlatsCollection): void
++main(arg0: java.lang.String[]): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>410</y><w>380</w><h>330</h></coordinates><panel_attributes>class +lab5.iopac.Commands
+extends lab5.iopac.RWXbase
+--
+--
+#Commands()
++Commands(arg0: FlatsCollection)
+    throws NullException
+#exit(): void
+#update(arg0: Integer, arg1: Flat): void
+#clear(): void
+#save(): void
+#insert(arg0: String, arg1: Flat): void
+#help(): void
+#show(): void
+#remove_key(arg0: String): void
+#remove_lower(arg0: Integer, arg1: Comparator): void
+#replace_if_greater(arg0: String, arg1: Flat, arg2: Comparator): void
+#replace_if_lower(arg0: String, arg1: Flat, arg2: Comparator): void
+#min_by_id(): void
+#filter_starts_with_name(arg0: String): void
+#print_descending(): void
+#info(): void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>300</x><y>130</y><w>220</w><h>220</h></coordinates><panel_attributes>class +lab5.iopac.Executer
+extends lab5.iopac.Commands
+implements lab5.interf.Executable
+--
+_-READ_LIMIT: int_
+--
++Executer(arg0: FlatsCollection)
+    throws NullException
+#Executer()
++getReadLimit(): int
++executeFromInput(): void
++executeFromEnv(): void
+    throws IOException, NullException
++executeFrom(arg0: String): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>120</y><w>220</w><h>190</h></coordinates><panel_attributes>class +lab5.iopac.ReadFileFlats
+extends lab5.iopac.RWXbase
+implements lab5.interf.ReadableFlats
+--
+--
++ReadFileFlats(arg0: FlatsCollection)
+    throws NullException
+#ReadFileFlats()
++readFrom(arg0: String): void
+    throws IOException, NullException
++printFlatDataArr(arg0: int): void
++read(): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>120</y><w>280</w><h>180</h></coordinates><panel_attributes>class +lab5.iopac.WriteFileFlats
+extends lab5.iopac.RWXbase
+implements lab5.interf.WritableFlats
+--
+--
+#WriteFileFlats()
++WriteFileFlats(arg0: FlatsCollection)
+    throws NullException
++writeTextTo(arg0: String, arg1: ArrayList): void
+    throws IOException, NullException
++write(arg0: ArrayList): void
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>360</y><w>280</w><h>330</h></coordinates><panel_attributes>class +lab5.iopac.RWXbase
+--
+#envVarName: String
+#envVarPath: String
+#collLink: FlatsCollection
+--
+#RWXbase()
++RWXbase(arg0: FlatsCollection)
+    throws NullException
++getEnvVarPath(): String
++getEnvName(): String
++getCollLink(): FlatsCollection
+#initializeEnvVarPath(): void
+    throws NullException
++makeKeyValFrom(arg0: String): String[]
+    throws NullException, BadInputException
++makeArrFrom(arg0: String): String[]
+    throws NullException
++openFileWriter(arg0: String): FileWriter
+    throws IOException, NullException
++openScanner(arg0: String): Scanner
+    throws IOException, NullException
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>530</x><y>90</y><w>40</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>100</y><w>40</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>30</x><y>90</y><w>40</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>20;10;10;30</additional_attributes></element><element><id>Relation</id><coordinates><x>170</x><y>290</y><w>300</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>280;110;110;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>180</x><y>300</y><w>140</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;110;50;60;40;50;50;40;60;50;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>700</x><y>300</y><w>40</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;20;10</additional_attributes></element><element><id>Relation</id><coordinates><x>380</x><y>496</y><w>90</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>200</x><y>770</y><w>210</w><h>30</h></coordinates><panel_attributes>class +lab5.datapac.FlatsCollection</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>766</y><w>60</w><h>40</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;20;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>340</y><w>120</w><h>380</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;40;50;60;50;70;70;50;70;60;160;80;160;80;180;60;180;60;300;100;360</additional_attributes></element><element><id>Relation</id><coordinates><x>350</x><y>620</y><w>120</w><h>170</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>100;10;90;40;80;30;60;40;70;50;60;130;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>50</x><y>290</y><w>40</w><h>140</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>20;10;10;120</additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>300</y><w>30</w><h>420</h></coordinates><panel_attributes>lt=&lt;..</panel_attributes><additional_attributes>10;10;10;400</additional_attributes></element></diagram>
