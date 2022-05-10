@@ -33,10 +33,15 @@ public class Executer extends Commands implements Executable {
         int i;
         for (i = 0; i < READ_LIMIT; ++i) {
             System.out.print("Команда: ");
-            String line = sc.nextLine();
-            String[] lineArr;
+            String line = sc.nextLine().trim();
+            String[] lineArr = null;
+            try { lineArr = RWXbase.makeKeyValFrom(line, ' '); }
+            catch (BadInputException | NullException e) {
+                lineArr = new String[2];
+                lineArr[0] = line;
+                lineArr[1] = null;
+            }
             try {
-                lineArr = RWXbase.makeArrFrom(line);
                 String key, subName;
                 Flat flat;
                 Integer id;
@@ -47,10 +52,14 @@ public class Executer extends Commands implements Executable {
                     case "info": info(); break;
                     case "show": show(); break;
                     case "insert":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (flats.containsKey(key)) {
-                            System.out.println("Ключ \"" + key +
-                                "\" уже добавлен.");
+                            System.out.println(
+                                "Ключ \"" + key + "\" уже добавлен."
+                            );
                             continue;
                         }
                         flat = Flat.flatFromInput(sc);
@@ -58,30 +67,43 @@ public class Executer extends Commands implements Executable {
                         break;
                     case "update":
                         id = Integer.valueOf(lineArr[1]);
+                        if (!Flat.isIdGood(id)) {
+                            throw new BadInputException("Плохой ID.");
+                        }
                         flat = Flat.flatFromInput(sc);
                         update(id, flat);
                         break;
                     case "remove_key":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         remove_key(key);
                         break;
                     case "clear": clear(); break;
                     case "save": save(); break;
                     case "execute_script":
-                        if (lineArr.length == 1) { executeFromEnv(); }
+                        if (lineArr[1] == null) { executeFromEnv(); }
                         else { executeFrom(lineArr[1]); }
                         break;
                     case "remove_lower":
                         id = Integer.valueOf(lineArr[1]);
+                        if (!Flat.isIdGood(id)) {
+                            throw new BadInputException("Плохой ID.");
+                        }
                         remove_lower(id, (a, b) -> {
                             return Float.compare(a.getArea(), b.getArea());
                         });
                         break;
                     case "replace_if_greater":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (!flats.containsKey(key)) {
-                            System.out.println("Ключа \"" +
-                                key + "\" нет в коллекции.");
+                            System.out.println(
+                                "Ключа \"" + key + "\" нет в коллекции."
+                            );
                             continue;
                         }
                         flat = Flat.flatFromInput(sc);
@@ -90,10 +112,14 @@ public class Executer extends Commands implements Executable {
                         });
                         break;
                     case "replace_if_lower":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (!flats.containsKey(key)) {
-                            System.out.println("Ключа \"" +
-                                key + "\" нет в коллекции.");
+                            System.out.println(
+                                "Ключа \"" + key + "\" нет в коллекции."
+                            );
                             continue;
                         }
                         flat = Flat.flatFromInput(sc);
@@ -110,13 +136,12 @@ public class Executer extends Commands implements Executable {
                         print_descending();
                         break;
                     
-                    default: throw new BadInputException(
-                        "Нет команды \"" + lineArr[0] + "\"."
-                    );
+                    default:
+                        throw new BadInputException(
+                            "Нет команды \"" + lineArr[0] + "\"."
+                        );
                 }
-            } catch (BadInputException |
-                     NullException |
-                     IOException e) {
+            } catch (BadInputException | NullException | IOException e) {
                 System.out.println(e.getMessage());
                 System.out.println("\"help\" для справки.");
                 continue;
@@ -145,10 +170,15 @@ public class Executer extends Commands implements Executable {
 
         int i = 0;
         for (i = 0; i < READ_LIMIT && sc.hasNext(); ++i) {
-            String line = sc.nextLine();
-            String[] lineArr;
+            String line = sc.nextLine().trim();
+            String[] lineArr = null;
+            try { lineArr = RWXbase.makeKeyValFrom(line, ' '); }
+            catch (BadInputException | NullException e) {
+                lineArr = new String[2];
+                lineArr[0] = line;
+                lineArr[1] = null;
+            }
             try {
-                lineArr = RWXbase.makeArrFrom(line);
                 String key, subName;
                 Flat flat;
                 Integer id;
@@ -159,11 +189,14 @@ public class Executer extends Commands implements Executable {
                     case "info": info(); break;
                     case "show": show(); break;
                     case "insert":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (flats.containsKey(key)) {
-                            System.out.println("Ключ \"" + key +
-                                "\" уже добавлен.");
-                            continue;
+                            throw new BadInputException(
+                                "Ключ \"" + key + "\" уже добавлен."
+                            );
                         }
                         line = sc.nextLine();
                         ++i;
@@ -172,12 +205,18 @@ public class Executer extends Commands implements Executable {
                         break;
                     case "update":
                         id = Integer.valueOf(lineArr[1]);
+                        if (!Flat.isIdGood(id)) {
+                            throw new BadInputException("Плохой ID.");
+                        }
                         line = sc.nextLine();
                         ++i;
                         flat = Flat.parseLine(line);
                         update(id, flat);
                         break;
                     case "remove_key":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         remove_key(key);
                         break;
@@ -190,16 +229,22 @@ public class Executer extends Commands implements Executable {
                         );
                     case "remove_lower":
                         id = Integer.valueOf(lineArr[1]);
+                        if (!Flat.isIdGood(id)) {
+                            throw new BadInputException("Плохой ID.");
+                        }
                         remove_lower(id, (a, b) -> {
                             return Float.compare(a.getArea(), b.getArea());
                         });
                         break;
                     case "replace_if_greater":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (!flats.containsKey(key)) {
-                            System.out.println("Ключа \"" +
-                                key + "\" нет в коллекции.");
-                            continue;
+                            throw new BadInputException(
+                                "Ключа \"" + key + "\" нет в коллекции."
+                            );
                         }
                         line = sc.nextLine();
                         ++i;
@@ -209,11 +254,14 @@ public class Executer extends Commands implements Executable {
                         });
                         break;
                     case "replace_if_lower":
+                        if (!FlatsCollection.isKeyGood(lineArr[1])) {
+                            throw new BadInputException("Плохой ключ.");
+                        }
                         key = lineArr[1];
                         if (!flats.containsKey(key)) {
-                            System.out.println("Ключа \"" +
-                                key + "\" нет в коллекции.");
-                            continue;
+                            throw new BadInputException(
+                                "Ключа \"" + key + "\" нет в коллекции."
+                            );
                         }
                         line = sc.nextLine();
                         ++i;
@@ -235,9 +283,8 @@ public class Executer extends Commands implements Executable {
                         "Нет команды \"" + lineArr[0] + "\"."
                     );
                 }
-            } catch (BadInputException |
-                     NullException e) {
-                e.printStackTrace();
+            } catch (BadInputException | NullException e) {
+                System.out.println(e.getMessage());
                 System.out.println(
                     "\tфайл: " + filePath + ";\n" +
                     "\tстрока: " + (i + 1) + ".");

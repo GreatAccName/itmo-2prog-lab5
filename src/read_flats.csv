@@ -1,16 +1,17 @@
-key1 FlatName1 21.625 3 false NONE PARK 1.625 1 HouseName1 1901 3
-key2 FlatName2 22.625 4 true NORMAL BAD 2.625 2 HouseName2 1902 2
-key3 FlatName3 23.625 5 false ENOUGH GOOD 3.625 3 HouseName3 1903 3
-key4 FlatName4 24.625 2 true FEW STREET 4.625 4 HouseName4 1904 2
-key5 FlatName5 25.625 3 false NONE PARK 5.625 5 HouseName5 1905 3
-key6 FlatName6 26.625 4 true NORMAL BAD 6.625 6 HouseName6 1906 2
-key7 FlatName7 27.625 5 false ENOUGH GOOD 7.625 7 HouseName7 1907 3
-key8 FlatName8 28.625 2 true FEW STREET 8.625 8 HouseName8 1908 2
-key9 FlatName9 29.625 3 false NONE PARK 9.625 9 HouseName9 1909 3
-key10 FlatName10 20.625 4 true NORMAL BAD 10.625 10 HouseName10 1910 2
-key11 FlatName11 21.625 5 false ENOUGH GOOD 11.625 11 HouseName11 1911 3
-key12 FlatName12 22.625 2 true FEW STREET 12.625 12 HouseName12 1912 2
-key13 FlatName13 23.625 3 false NONE PARK 13.625 13 HouseName13 1913 3
-key14 FlatName14 24.625 4 true NORMAL BAD 14.625 14 HouseName14 1914 2
-key15 FlatName15 25.625 5 false ENOUGH GOOD 15.625 15 HouseName15 1915 3
-key16 FlatName16 26.625 2 true FEW STREET 16.625 16 HouseName16 1916 2
+key,FlatName,Area,NumberOfRooms,IsNew,Transport,View,CoordinateX,CoordinateY,HouseName,HouseYear,HouseNumberOfLifts
+key1,FlatName1,21.625,3,false,NONE,PARK,1.625,1,HouseName1,1901,3
+key2,FlatName2,22.625,4,true,NORMAL,BAD,2.625,2,HouseName2,1902,2
+key3,FlatName3,23.625,5,false,ENOUGH,GOOD,3.625,3
+key4,FlatName4,24.625,2,true,FEW,STREET,4.625,4,HouseName4,1904,2
+key5,FlatName5,25.625,3,false,NONE,PARK,5.625,5
+key6,FlatName6,26.625,4,true,NORMAL,BAD,6.625,6
+key7,FlatName7,27.625,5,false,ENOUGH,GOOD,7.625,7,HouseName7,1907,3
+key8,FlatName8,28.625,2,true,FEW,STREET,8.625,8
+key9,FlatName9,29.625,3,false,NONE,PARK,9.625,9
+key10,FlatName10,20.625,4,true,NORMAL,BAD,10.625,10,HouseName10,1910,2
+key11,FlatName11,21.625,5,false,ENOUGH,GOOD,11.625,11,HouseName11,1911,3
+key12,FlatName12,22.625,2,true,FEW,STREET,12.625,12
+key13,FlatName13,23.625,3,false,NONE,PARK,13.625,13,HouseName13,1913,3
+key14,FlatName14,24.625,4,true,NORMAL,BAD,14.625,14
+key15,FlatName15,25.625,5,false,ENOUGH,GOOD,15.625,15
+key16,FlatName16,26.625,2,true,FEW,STREET,16.625,16

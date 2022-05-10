@@ -64,7 +64,7 @@ public class Coordinates {
      * где каждое поле записано через пробел в единственной строке.
      */
     public String getSimpleCoordinates() {
-        return Double.valueOf(x).toString() + " " +
+        return Double.valueOf(x).toString() + "," +
                Integer.valueOf(y).toString();
     }
 

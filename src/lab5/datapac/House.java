@@ -80,8 +80,8 @@ public class House {
      * где каждое поле записано через пробел в единственной строке.
      */
     public String getSimpleHouse() {
-        return name + " " +
-               Long.valueOf(year).toString() + " " +
+        return name + "," +
+               Long.valueOf(year).toString() + "," +
                Integer.valueOf(numberOfLifts).toString();
     }
 

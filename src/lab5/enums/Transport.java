@@ -13,9 +13,7 @@ public enum Transport {
         if (s == null) { return false; }
         Transport[] tArr = Transport.values();
         for (Transport elem : tArr) {
-            if (elem.toString().equals(s)) {
-                return true;
-            }
+            if (elem.toString().equals(s)) { return true; }
         }
         return false;
     }

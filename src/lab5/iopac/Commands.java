@@ -5,6 +5,7 @@ import java.util.*;
 
 import lab5.datapac.Flat;
 import lab5.datapac.FlatsCollection;
+import lab5.datapac.House;
 import lab5.exceptions.BadInputException;
 import lab5.exceptions.NullException;
 
@@ -49,17 +50,17 @@ public class Commands extends RWXbase {
         );
         System.out.println(
             "Ограничения ввода данных квартиры:\n" +
-            " Имя: не пустое, не более 1 слова\n" +
+            " Имя: не пустое\n" +
             " Площадь (float): больше 0\n" +
             " Кол-во комнат: больше 0\n" +
             " Ограничения ввода координат квартиры:\n" +
             "  x (double): 0 <= x <= 165\n" +
             "  y (int): 0 <= y <= 165\n" +
             " Ограничения ввода данных о доме квартиры:\n" +
-            "  Имя: не пустое, не более 1 слова\n" +
+            "  Имя: не пустое\n" +
             "  Год (long): больше 0\n" +
             "  Кол-во лифтов: больше 0\n" +
-            "Ключ: не пустой, не более 1 слова"
+            "Ключ: не пустой"
         );
     }
     /**Вывести в стандартный поток вывода информацию о коллекции
@@ -118,13 +119,21 @@ public class Commands extends RWXbase {
         while (iter.hasNext()) {
             Flat iterFlat = iter.next();
             if (iterFlat.getId().equals(id)) {
+                House h = null;
+                try { h = flat.getHouse(); }
+                catch (NullException e) { System.out.println(e.getMessage()); }
                 try {
                     iterFlat.setFlat(flat.getName(), flat.getArea(),
                               flat.getNumberOfRooms(), flat.getIsNew(),
                               flat.getTransport(), flat.getView(),
-                              flat.getCoordinates(), flat.getHouse());
-                } catch (BadInputException | NullException e) {
-                    e.printStackTrace();
+                              flat.getCoordinates(), h);
+                } catch (BadInputException eBadIn) {
+                    System.out.println(
+                        eBadIn.getMessage() + "\n" +
+                        "Изменения в квартиру " +
+                        "по ID \"" + id + "\" НЕ внесены."
+                    );
+                    return;
                 }
                 System.out.println("Изменения в квартиру " +
                     "по ID \"" + id + "\" внесены.");
@@ -152,7 +161,10 @@ public class Commands extends RWXbase {
         flats.clear();
         System.out.println("Коллекция очищена.");
     }
-    /**Сохранить коллекцию в файл.*/
+    /**
+     * Сохранить коллекцию в файл.
+     * Формат записи: 
+    */
     protected void save() {
         Map<String, Flat> flats = collLink.getFlats();
         if (flats.isEmpty()) {
@@ -165,17 +177,12 @@ public class Commands extends RWXbase {
         WriteFileFlats writeFileFlats = null;
         try {
             writeFileFlats = new WriteFileFlats(collLink);
-        } catch (NullException e) {
-            e.printStackTrace();
-        }
-        
-        ArrayList<String> text = new ArrayList<>();
-        flats.forEach((k, v) -> {
-            text.add(k + " " + v.getSimpleFlat());
-        });
-        
-        try { writeFileFlats.write(text); }
-        catch (IOException | NullException e) {
+            ArrayList<String> text = new ArrayList<>();
+            flats.forEach((k, v) -> {
+                text.add(k + "," + v.getSimpleFlat());
+            });
+            writeFileFlats.write(text);
+        } catch (NullException | IOException e) {
             e.printStackTrace();
         }
         System.out.println(
@@ -297,12 +304,16 @@ public class Commands extends RWXbase {
             }
         }
         if (subNamedFlats.isEmpty()) {
-            System.out.println("Нет квартир в коллекции, " +
-                "имена которых начинаются на \"" + subName + "\".");
+            System.out.println(
+                "Нет квартир в коллекции, имена которых" +
+                " начинаются на \"" + subName + "\"."
+            );
             return;
         }
-        System.out.println("Квартиры в коллекции, " +
-            "имена которых начинаются на \"" + subName + "\":");
+        System.out.println(
+            "Квартиры в коллекции, имена которых" +
+            " начинаются на \"" + subName + "\":"
+        );
         for (Flat flat : subNamedFlats) {
             System.out.println(flat.getShowableFlat());
         }

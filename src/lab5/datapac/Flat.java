@@ -71,6 +71,14 @@ public final class Flat implements Comparable<Flat> {
     }
 
     /**
+     * Проверяет, хорош ли {@code idToCheck}.
+     * @param idToCheck проверяемое ID.
+     * @return {@code true} при {@code idToCheck > 0 && idToCheck < idGen}.
+     */
+    public static boolean isIdGood(Integer idToCheck) {
+        return idToCheck > 0 && idToCheck < idGen;
+    }
+    /**
      * Проверяет {@code argN}.
      * @param argN параметр имени квартиры.
      * @return
@@ -231,10 +239,12 @@ public final class Flat implements Comparable<Flat> {
         // Количество элементов: 6 + 2 + 3
         String[] sArr = RWXbase.makeArrFrom(line);
         int l = sArr.length;
-        if (l != 8 && l != 11) { throw new BadInputException(
-            "Количество элементов L в переданной строке \"" +
-            line + "\" недопустимо, т.е. (L != 8 && L != 11)."
-        ); }
+        if (l != 8 && l != 11) {
+            throw new BadInputException(
+                "Количество элементов L в переданной строке \"" +
+                line + "\" недопустимо, т.е. (L != 8 && L != 11)."
+            );
+        }
         
         String argN = null;
         float argA = 0F;
@@ -245,8 +255,8 @@ public final class Flat implements Comparable<Flat> {
         Coordinates argC = null;
         House argH = null;
 
-        argN = sArr[0];
         try {
+            argN = sArr[0];
             argA = Float.valueOf(sArr[1]);
             argNOR = Integer.valueOf(sArr[2]);
             argIsN = Boolean.valueOf(sArr[3]);
@@ -331,22 +341,14 @@ public final class Flat implements Comparable<Flat> {
 
         try {
             System.out.print(" Имя: ");
-            line = sc.nextLine();
-            String[] sArr = RWXbase.makeArrFrom(line);
-            argN = sArr[0];
-
+            argN = sc.nextLine();
             System.out.print(" Площадь (float): ");
-            line = sc.nextLine();
-            argA = Float.valueOf(line);
-
+            argA = Float.valueOf(sc.nextLine());
             System.out.print(" Кол-во комнат: ");
-            line = sc.nextLine();
-            argNOR = Integer.valueOf(line);
-
+            argNOR = Integer.valueOf(sc.nextLine());
             System.out.print(" Новизна (true, что-либо): ");
-            line = sc.nextLine();
-            argIsN = Boolean.valueOf(line);
-        } catch (NumberFormatException | NullException e) {
+            argIsN = Boolean.valueOf(sc.nextLine());
+        } catch (NumberFormatException e) {
             throw new BadInputException();
         }
 
@@ -371,12 +373,9 @@ public final class Flat implements Comparable<Flat> {
         int y = 0;
         try {
             System.out.print("  x (double): ");
-            line = sc.nextLine();
-            x = Double.valueOf(line);
-
+            x = Double.valueOf(sc.nextLine());
             System.out.print("  y (int): ");
-            line = sc.nextLine();
-            y = Integer.valueOf(line);
+            y = Integer.valueOf(sc.nextLine());
         } catch (NumberFormatException e) {
             throw new BadInputException();
         }
@@ -389,20 +388,15 @@ public final class Flat implements Comparable<Flat> {
         System.out.print("  Имя: ");
         line = sc.nextLine();
         if (line.length() != 0) {
-            String houseN = "";
+            String houseN = line;
             long houseY = 0;
             int houseNOL = 0;
             try {
-                String[] sArr = RWXbase.makeArrFrom(line);
-                houseN = sArr[0];
                 System.out.print("  Год (long): ");
-                line = sc.nextLine();
-                houseY = Long.valueOf(line);
-
+                houseY = Long.valueOf(sc.nextLine());
                 System.out.print("  Кол-во лифтов: ");
-                line = sc.nextLine();
-                houseNOL = Integer.valueOf(line);
-            } catch (NumberFormatException | NullException e) {
+                houseNOL = Integer.valueOf(sc.nextLine());
+            } catch (NumberFormatException e) {
                 throw new BadInputException();
             }
             argH = new House(houseN, houseY, houseNOL);
@@ -481,16 +475,16 @@ public final class Flat implements Comparable<Flat> {
      */
     public String getSimpleFlat() {
         String s =
-            id + " " +
-            creationDate + " " +
-            name + " " +
-            area + " " +
-            numberOfRooms + " " +
-            isNew + " " +
-            transport + " " +
-            view + " " +
+            id + "," +
+            creationDate + "," +
+            name + "," +
+            area + "," +
+            numberOfRooms + "," +
+            isNew + "," +
+            transport + "," +
+            view + "," +
             coordinates.getSimpleCoordinates();
-        if (house != null) { s += " " + house.getSimpleHouse(); }
+        if (house != null) { s += "," + house.getSimpleHouse(); }
         return s;
     }
 

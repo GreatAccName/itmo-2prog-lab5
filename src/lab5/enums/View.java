@@ -13,9 +13,7 @@ public enum View {
         if (s == null) { return false; }
         View[] vArr = View.values();
         for (View elem : vArr) {
-            if (elem.toString().equals(s)) {
-                return true;
-            }
+            if (elem.toString().equals(s)) { return true; }
         }
         return false;
     }

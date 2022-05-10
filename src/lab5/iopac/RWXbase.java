@@ -55,54 +55,65 @@ public class RWXbase {
      */
     public RWXbase(FlatsCollection toLink)
     throws NullException {
-        if (toLink == null) { throw new NullException(
-        "FlatsCollection toLink == null"
-        ); }
+        if (toLink == null) {
+            throw new NullException(
+                "FlatsCollection toLink == null"
+            );
+        }
         collLink = toLink;
     }
     
     /**
      * Делит строку на ключ и значение.
-     * Разделение по {@code 1-му пробельному символу}.
+     * Разделение по '{@code separator}'.
      * @param s необработанная строка.
+     * @param separator разделитель.
      * @return массив из 2-ух элементов {@code [key, value]}.
      * @throws NullException если {@code s == null}.
-     * @throws BadInputException если пробельный символ не найден.
+     * @throws BadInputException если пустой ключ или разделитель не найден.
      */
-    public static String[] makeKeyValFrom(String s)
+    public static String[] makeKeyValFrom(String s, char separator)
     throws NullException, BadInputException {
-        if (s == null) { throw new NullException(
-            "Переданная строка s: s == null"
-        ); }
+        if (s == null) {
+            throw new NullException(
+                "Переданная строка s: s == null"
+            );
+        }
         s = s.trim();
         int i = 0;
-        while (i < s.length() &&
-               !Character.isWhitespace(s.charAt(i))) { ++i; }
-        if (i == s.length()) { throw new BadInputException(
-            "В переданной строке \"" + s +
-            "\" нет пробельных символов"
-        ); }
+        while (i < s.length() && s.charAt(i) != separator) { ++i; }
+        if (i == s.length()) {
+            throw new BadInputException(
+                "В переданной строке \"" + s + "\" " +
+                "нет разделителя '" + separator + "'"
+            );
+        }
+        if (i == 0) { throw new BadInputException(); }
+        String val = "";
+        if (i != s.length() - 1) { val = s.substring(i + 1).trim(); }
         String[] sArr = new String[] {
             s.substring(0, i),
-            s.substring(i)
+            val
         };
         return sArr;
     }
     /**
      * Создает массив элементов строки.
-     * Разделение по пробельным символам.
+     * Разделение по запятой '{@code ,}'.
      * @param s входная строка.
      * @return массив элементов строки.
      * @throws NullException если {@code s == null}.
      */
     public static String[] makeArrFrom(String s)
     throws NullException {
-        if (s == null) { throw new NullException(
-            "Переданная строка s: s == null"
-        ); }
+        if (s == null) {
+            throw new NullException(
+                "Переданная строка s: s == null"
+            );
+        }
         s = s.trim();
         if (s.length() == 0) { return new String[0]; }
-        return s.split("[\\h]+");
+        return s.split("[,]");
     }
 
     /**
@@ -115,13 +126,17 @@ public class RWXbase {
      */
     public static FileWriter openFileWriter(String filePath)
     throws IOException, NullException {
-        if (filePath == null) { throw new NullException(
-            "Переданная строка filePath: filePath == null"
-        ); }
+        if (filePath == null) {
+            throw new NullException(
+                "Переданная строка filePath: filePath == null"
+            );
+        }
         File file = new File(filePath);
-        if (!file.canRead()) { throw new IOException(
-            "\"" + filePath + "\" не может быть прочитан"
-        ); }
+        if (!file.canRead()) {
+            throw new IOException(
+                "\"" + filePath + "\" не может быть прочитан"
+            );
+        }
         return new FileWriter(file, false);
     }
     /**
@@ -134,13 +149,17 @@ public class RWXbase {
      */
     public static Scanner openScanner(String filePath)
     throws IOException, NullException {
-        if (filePath == null) { throw new NullException(
-            "Переданная строка filePath: filePath == null"
-        ); }
+        if (filePath == null) {
+            throw new NullException(
+                "Переданная строка filePath: filePath == null"
+            );
+        }
         File file = new File(filePath);
-        if (!file.canRead()) { throw new IOException(
-            "\"" + filePath + "\" не может быть прочитан"
-        ); }
+        if (!file.canRead()) {
+            throw new IOException(
+                "\"" + filePath + "\" не может быть прочитан"
+            );
+        }
         return new Scanner(file);
     }
 }

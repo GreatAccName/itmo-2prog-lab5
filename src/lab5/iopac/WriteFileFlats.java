@@ -30,6 +30,12 @@ implements WritableFlats {
     public void writeTextTo(String filePath, ArrayList<String> text)
     throws IOException, NullException {
         FileWriter fw = openFileWriter(filePath);
+        // шапка
+        fw.write(
+            "key,id,creationDate,FlatName,Area,NumberOfRooms,IsNew," +
+            "Transport,View,CoordinateX,CoordinateY," +
+            "HouseName,HouseYear,HouseNumberOfLifts\n"
+        );
         for (String line : text) { fw.write(line + "\n"); }
         fw.close();
     }
