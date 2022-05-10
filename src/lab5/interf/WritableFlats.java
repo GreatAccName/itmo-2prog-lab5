@@ -9,6 +9,8 @@ import lab5.exceptions.NullException;
 public interface WritableFlats {
     /**
      * Записывает данные о коллекции в файл.
+     * В первую строку записывает "шапку",
+     * потом данные в каждой новой строке.
      * @param filePath путь к указанному файлу.
      * @param text записываемый построчно текст.
      * @throws IOException при плохом файле или его имени.
@@ -19,6 +21,8 @@ public interface WritableFlats {
     /**
      * Записывает данные о коллекции в файл
      * по пути переменной окружения.
+     * В первую строку записывает "шапку",
+     * потом данные в каждой новой строке.
      * @param text записываемый построчно текст.
      * @throws IOException при плохом файле или его имени.
      * @throws NullException при обращении к {@code null}.

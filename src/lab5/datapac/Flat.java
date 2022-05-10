@@ -221,7 +221,7 @@ public final class Flat implements Comparable<Flat> {
     /**
      * Преобразует строку данных в {@code Flat}.
      * Каждый параметр должен отделяться друг от друга
-     * только пробеольными символами. Допустимое количество
+     * только запятыми '{@code ,}'. Допустимое количество
      * элементов в строке: либо 8, либо 11. Строгий порядок
      * элементов: name, area, numberOfRooms, isNew, transport, view,
      * CoordinatesX, CoordinatesY,

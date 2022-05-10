@@ -8,6 +8,8 @@ import lab5.exceptions.NullException;
 public interface ReadableFlats {
     /**
      * Считывает данные коллекции из файла.
+     * В первой строке должна быть "шапка",
+     * потом данные в каждой новой строке.
      * @param filePath путь файла.
      * @throws IOException при плохом файле или его пути.
      * @throws NullException при обращении к {@code null}.
@@ -17,6 +19,8 @@ public interface ReadableFlats {
     /**
      * Считывает данные коллекции из файла
      * по пути переменной окружения.
+     * В первой строке должна быть "шапка",
+     * потом данные в каждой новой строке.
      * @throws IOException при плохом файле или его пути.
      * @throws NullException при обращении к {@code null}.
      */
