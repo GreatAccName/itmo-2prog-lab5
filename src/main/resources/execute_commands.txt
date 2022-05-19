@@ -1,0 +1,29 @@
+
+bad command
+help
+info
+show
+print_descending
+update 20
+update 2
+    name2,50,2,false
+    FEW,GOOD
+    2,2
+    hName2,2,2
+remove_lower 30.1
+info
+min_by_id
+execute_script
+insert key100500
+    Flat Name 5000,2,2,false
+    FEW,GOOD
+    4,4
+    hName4,4,4
+remove_key key4
+filter_starts_with_name Flat
+replace_if_greater key100500 4
+replace_if_lower key100500 4
+save
+clear
+exit
+info

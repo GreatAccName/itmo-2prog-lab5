@@ -1,0 +1,9 @@
+key,name,area,numberOfRooms,isNew,transport,view,coordinatesX,coordinatesY,houseName,houseYear,houseNumberOfLifts
+key1,FlatName1,21.625,3,false,NONE,PARK,1.625,1,HouseName1,2000,3
+key2,FlatName2,22.625,4,true,NORMAL,BAD,2.625,2
+key3,FlatName3,23.625,5,false,ENOUGH,GOOD,3.625,3,HouseName3,1903,3
+key4,FlatName4,34.625,2,true,FEW,STREET,4.625,4,HouseName4,1904,2
+troll,Логово Мумий тролля,32.25,3,false,NORMAL,STREET,6.5,9,Хуторок,1993,2
+thieves,Место для отдыха Отпетых мошенников,172.5,12,true,ENOUGH,PARK,3.125,32
+handeHoch,Владения Руки вверх,123.125,12,true,ENOUGH,PARK,16.5,64
+redhead,Обитель Иванушек,3.5,3,false,FEW,STREET,32.625,128,Гороховая 54,1963,1
