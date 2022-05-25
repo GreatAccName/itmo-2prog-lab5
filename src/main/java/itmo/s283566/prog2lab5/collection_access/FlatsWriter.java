@@ -40,8 +40,6 @@ public class FlatsWriter {
             writer.flush();
         }
         writer.close();
-        BufferedWriter outputWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-        outputWriter.write("Коллекция успешно записана в файл: " + filePath + ".\n");
-        outputWriter.flush();
+        System.out.println("Коллекция успешно записана в файл: " + filePath + ".");
     }
 }
